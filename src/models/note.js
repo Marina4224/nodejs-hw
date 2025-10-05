@@ -2,33 +2,39 @@ import { model, Schema } from 'mongoose';
 
 const notesSchema = new Schema(
   {
-    name: {
+    title: {
       type: String,
       required: true,
+      trim: true,
     },
-    age: {
-      type: Number,
-      required: true,
-    },
-    gender: {
+    content: {
       type: String,
-      required: true,
-      enum: ['male', 'female', 'other'],
+      required: false,
+      default: "",
+      trim: true,
     },
-    avgMark: {
-      type: Number,
-      required: true,
-    },
-    onDuty: {
-      type: Boolean,
-      required: true,
-      default: false,
+    tag: {
+      type: String,
+      required: false,
+      default: "Todo",
+      enum: [
+        "Work",
+        "Personal",
+        "Meeting",
+        "Shopping",
+        "Ideas",
+        "Travel",
+        "Finance",
+        "Health",
+        "Important",
+        "Todo",
+      ],
     },
   },
   {
     timestamps: true,
     versionKey: false,
-  },
+  }
 );
 
-export const Note = model('Note', notesSchema);
+export const note = model('Note', notesSchema);
