@@ -1,9 +1,9 @@
-import { note } from '../models/note.js';
+import { Note } from '../models/note.js';
 import createHttpError from 'http-errors';
 
 // Отримати список усіх студентів
 export const getAllNotes = async (req, res) => {
-  const notes = await note.find();
+  const notes = await Note.find();
   res.status(200).json(notes);
 };
 
